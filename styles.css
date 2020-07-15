@@ -5,7 +5,7 @@ body {
 }
 
 .game-name {
-  padding: 3% 0 2%;
+  padding: 1% 0 1%;
   color: #3f72af;
   font-size: 5em;
 }
@@ -19,27 +19,44 @@ body {
 }
 
 .row {
-  padding: 1% 30%;
+  padding: 2% 30%;
 }
 
 .btn {
   width: 200px;
   height: 200px;
-  
+}
+
+.btn:focus {
+  outline: 0;
 }
 
 #green {
   background-color: green;
+  border-top-left-radius: 100px;
 }
 
 #red {
   background-color: red;
+  border-top-right-radius: 100px;
 }
 
 #yellow {
   background-color: yellow;
+    border-bottom-left-radius: 100px;
 }
 
 #blue {
   background-color: blue;
+      border-bottom-right-radius: 100px;
+}
+
+.pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
+}
+
+.game-over {
+  background-color: red;
+  opacity: 0.8;
 }
