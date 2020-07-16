@@ -22,38 +22,38 @@ body {
   padding: 2% 30%;
 }
 
-.btn {
+button {
   width: 200px;
   height: 200px;
 }
 
-.btn:focus {
+button:focus {
   outline: 0;
 }
 
-#green {
+.green {
   background-color: green;
   border-top-left-radius: 100px;
 }
 
-#red {
+.red {
   background-color: red;
   border-top-right-radius: 100px;
 }
 
-#yellow {
+.yellow {
   background-color: yellow;
     border-bottom-left-radius: 100px;
 }
 
-#blue {
+.blue {
   background-color: blue;
       border-bottom-right-radius: 100px;
 }
 
 .pressed {
   box-shadow: 0 0 20px white;
-  background-color: grey;
+  background-color: white;
 }
 
 .game-over {

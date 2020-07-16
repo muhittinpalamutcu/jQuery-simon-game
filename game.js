@@ -10,16 +10,26 @@ function nextSequence() {
   gamePath.push(randomChosenColor);
 }
 
-$(".btn").on("click", function(event) {
+$("button").on("click", function(event) {
   //console.log(event.target.id);
   var userChosenColor = event.target.id;
   $("#" + userChosenColor).fadeOut(100).fadeIn(100);
-  playSound(userChosenColor);
   userClickPath.push(userChosenColor);
+  playSound(userChosenColor);
+  animatePress(userChosenColor);
   console.log(userClickPath);
 });
 
 function playSound(color) {
   var audio = new Audio('sounds/' + color + '.mp3');
   audio.play();
+}
+
+
+function animatePress(currentColor) {
+  var currentButton=$("#"+currentColor);
+  currentButton.addClass("pressed");
+  setTimeout(function () {
+    currentButton.removeClass("pressed");
+  }, 100);
 }
