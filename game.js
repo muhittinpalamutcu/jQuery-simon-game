@@ -2,12 +2,34 @@ var gamePath = [];
 var userClickPath = [];
 var buttonColors = ["green", "red", "yellow", "blue"];
 
+var startGame = false;
+var level = 0;
+
+
+$(document).on("keypress", function(event) {
+  var key = event.key;
+  if (!startGame) {
+    if (key === "A" || key === "a") {
+      startGame = true;
+      console.log("game started");
+      $("h1").text("Level " + level);
+      nextSequence();
+    }
+  } else {
+    console.log("You are already in game");
+  }
+});
+
 function nextSequence() {
+  userClickPath = [];
   var randomNumber = Math.random();
   randomNumber = randomNumber * 4;
   randomNumber = Math.floor(randomNumber);
   var randomChosenColor = buttonColors[randomNumber];
   gamePath.push(randomChosenColor);
+  animatePress(randomChosenColor);
+  level++;
+  $("h1").text("Level " + level);
 }
 
 $("button").on("click", function(event) {
@@ -15,6 +37,7 @@ $("button").on("click", function(event) {
   var userChosenColor = event.target.id;
   $("#" + userChosenColor).fadeOut(100).fadeIn(100);
   userClickPath.push(userChosenColor);
+  checkAnswer(userClickPath.length - 1);
   playSound(userChosenColor);
   animatePress(userChosenColor);
   console.log(userClickPath);
@@ -27,9 +50,22 @@ function playSound(color) {
 
 
 function animatePress(currentColor) {
-  var currentButton=$("#"+currentColor);
+  var currentButton = $("#" + currentColor);
   currentButton.addClass("pressed");
-  setTimeout(function () {
+  setTimeout(function() {
     currentButton.removeClass("pressed");
   }, 100);
+}
+
+function checkAnswer(currentLevel) {
+  if (gamePath[currentLevel] === userClickPath[currentLevel]) {
+    if (gamePath.length === userClickPath.length) {
+      console.log("success");
+      setTimeout(function () {
+        nextSequence();
+      }, 1000);
+    }
+  } else {
+    console.log("wrong");
+  }
 }
