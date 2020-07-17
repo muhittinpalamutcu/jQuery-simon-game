@@ -61,11 +61,25 @@ function checkAnswer(currentLevel) {
   if (gamePath[currentLevel] === userClickPath[currentLevel]) {
     if (gamePath.length === userClickPath.length) {
       console.log("success");
-      setTimeout(function () {
+      setTimeout(function() {
         nextSequence();
       }, 1000);
     }
   } else {
+    var wrong = new Audio('sounds/wrong.mp3');
+    wrong.play();
+    $("body").addClass("game-over");
+    setTimeout(function() {
+      $("body").removeClass("game-over");
+    }, 300);
+    $("h1").text("Game Over, Press Key A to Restart Game")
     console.log("wrong");
+    startOver();
   }
+}
+
+function startOver(){
+  level=0;
+  gamePath=[];
+  startGame=false;
 }
