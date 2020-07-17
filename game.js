@@ -43,20 +43,6 @@ $("button").on("click", function(event) {
   console.log(userClickPath);
 });
 
-function playSound(color) {
-  var audio = new Audio('sounds/' + color + '.mp3');
-  audio.play();
-}
-
-
-function animatePress(currentColor) {
-  var currentButton = $("#" + currentColor);
-  currentButton.addClass("pressed");
-  setTimeout(function() {
-    currentButton.removeClass("pressed");
-  }, 100);
-}
-
 function checkAnswer(currentLevel) {
   if (gamePath[currentLevel] === userClickPath[currentLevel]) {
     if (gamePath.length === userClickPath.length) {
@@ -66,6 +52,7 @@ function checkAnswer(currentLevel) {
       }, 1000);
     }
   } else {
+    console.log("wrong");
     var wrong = new Audio('sounds/wrong.mp3');
     wrong.play();
     $("body").addClass("game-over");
@@ -73,13 +60,25 @@ function checkAnswer(currentLevel) {
       $("body").removeClass("game-over");
     }, 300);
     $("h1").text("Game Over, Press Key A to Restart Game")
-    console.log("wrong");
     startOver();
   }
 }
 
-function startOver(){
-  level=0;
-  gamePath=[];
-  startGame=false;
+function animatePress(currentColor) {
+  var currentButton = $("#" + currentColor);
+  currentButton.addClass("pressed");
+  setTimeout(function() {
+    currentButton.removeClass("pressed");
+  }, 100);
+}
+
+function playSound(color) {
+  var audio = new Audio('sounds/' + color + '.mp3');
+  audio.play();
+}
+
+function startOver() {
+  level = 0;
+  gamePath = [];
+  startGame = false;
 }

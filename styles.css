@@ -5,7 +5,7 @@ body {
 }
 
 .game-name {
-  padding: 1% 0 1%;
+  padding: 1% 0 0;
   color: #3f72af;
   font-size: 5em;
 }
@@ -15,7 +15,7 @@ body {
 }
 
 .button-container {
-  padding-top: 5%;
+  padding-top: 1%;
 }
 
 .row {
@@ -43,12 +43,12 @@ button:focus {
 
 .yellow {
   background-color: yellow;
-    border-bottom-left-radius: 100px;
+  border-bottom-left-radius: 100px;
 }
 
 .blue {
   background-color: blue;
-      border-bottom-right-radius: 100px;
+  border-bottom-right-radius: 100px;
 }
 
 .pressed {
